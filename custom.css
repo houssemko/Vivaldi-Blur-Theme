@@ -36,11 +36,6 @@
 /* ==========================================================================
    WINDOW INTERFACE & HEADERS
    ========================================================================== */
-#browser .tabbar-wrapper, 
-#browser.tabs-top #header { 
-    background-color: transparent; 
-}
-
 /* Hide header completely during UI Auto-hide */
 .auto-hide #header {
     display: none !important;
@@ -50,17 +45,6 @@
 .auto-hide-wrapper.top {
     background-color: var(--bgDark) !important;
     backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-}
-
-/* Resize the window button group */
-.window-buttongroup {
-    height: 26px !important;
-}
-.window-buttongroup button {
-    width: 32px !important;
-    height: 26px !important;
-    padding: 0 !important;
 }
 
 /* Resize the window button group when Auto-hide UI enabled */
@@ -80,16 +64,12 @@
 #browser:not(.transparent-tabbar) #tabs-tabbar-container {
     background-color: var(--bgDark);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: var(--radius);
-    height: 30px;
 }
 
 /* Tabs Button at Tab Bar */
 .button-popup {
     background: var(--bgDisabledDark);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: none;
 }
 
@@ -101,55 +81,21 @@
     z-index: 5 !important;
 }
 
-
 /* ==========================================================================
    ADDRESS BAR & SEARCH FIELDS
    ========================================================================== */
-.SearchField, 
 .UrlBar-AddressField {
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-.SearchField:hover, 
 .UrlBar-AddressField:hover {
     background-color: var(--bg);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
-
-
-/* ==========================================================================
-   SPEED DIAL SEARCH BAR
-   ========================================================================== */
-/* Idle blurred */
-.SpeedDialView .SearchField:not(:hover):not(:focus-within) {
-    background-color: var(--bg) !important;
-    backdrop-filter: var(--blurMed) !important;
-    -webkit-backdrop-filter: var(--blurMed) !important;
-    border-radius: var(--radius) !important;
-    box-shadow: none !important;
-    transition: background-color 0.18s ease, backdrop-filter 0.18s ease;
-}
-
-/* Stronger blur when hovered/focused */
-.SpeedDialView .SearchField:hover {
-    background-color: var(--bg) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border-radius: var(--radius) !important;
-}
-
-/* Inner input transparency */
-.SpeedDialView .SearchField input {
-    background: transparent !important;
-    color: inherit !important;
-    border-radius: var(--radius) !important;
-}
-
 
 /* ==========================================================================
    PANELS & FOOTER STATUS BAR
@@ -170,7 +116,6 @@ footer#footer {
 footer .toolbar-statusbar {
     background-color: var(--bg);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border-radius: var(--radius);
     margin: 0 5px 5px 5px;
 }
@@ -179,13 +124,11 @@ footer .toolbar-statusbar {
 .inner > .StatusInfo > .StatusInfo-Content {
     background-color: var(--bg) !important;
     backdrop-filter: var(--blurLow) !important;
-    -webkit-backdrop-filter: var(--blurLow) !important;
     border-radius: var(--radius) !important;
     padding-bottom: 5px !important;
     margin: 0 5px 4px 5px !important;
     border: none !important;
 }
-
 
 /* ==========================================================================
    UI OVERLAYS, MODALS & DIALOGS
@@ -204,33 +147,6 @@ footer .toolbar-statusbar {
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
 }
 .quick-command-container .quick-commands * {
-    color: #ffffff !important;
-}
-
-/* CTRL+F Search Box */
-.find-in-page-wrapper {
-    background-color: var(--bgDark);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-.find-in-page-wrapper * {
-    color: #ffffff !important;
-}
-
-/* Clock Popup */
-.ClockPopup-Header,
-.ClockPopup-Alarms,
-.ClockPopup-Countdowns,
-.ClockPopup .toolbar,
-.ClockPopup-Active {
-    background-color: var(--bgDark) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border: none;
-}
-.ClockPopup-Header *, 
-.ClockPopup-Active * {
     color: #ffffff !important;
 }
 
@@ -260,14 +176,13 @@ footer .toolbar-statusbar {
 .sortselector:not(.sortselector-compact),
 .PrivacyDash-User-Top,
 .PrivacyDash-StatusBlock--Fact {
-    background-color: var(--bgDisabledDark) !important;
+    background-color: var(--bgDark) !important;
     backdrop-filter: blur(12px) !important;
     border: none !important;
 }
 #modal-bg.PrivacyDash .modal-wrapper * {
     color: #ffffff !important;
 }
-
 
 /* ==========================================================================
    INTERNAL PAGES (vivaldi:about)
@@ -279,7 +194,6 @@ footer .toolbar-statusbar {
 .footer-credits {
     background-color: var(--bgDisabledDark) !important;
     backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
     border: none !important;
 }
 .header-section *, 
