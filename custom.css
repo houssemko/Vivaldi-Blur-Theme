@@ -45,6 +45,7 @@
 .auto-hide-wrapper.top {
     background-color: var(--bgDark) !important;
     backdrop-filter: blur(12px) !important;
+    will-change: backdrop-filter;
 }
 
 /* Resize the window button group when Auto-hide UI enabled */
@@ -64,13 +65,35 @@
 #browser:not(.transparent-tabbar) #tabs-tabbar-container {
     background-color: var(--bgDark);
     backdrop-filter: blur(12px);
+    will-change: backdrop-filter;
 }
 
-/* Tabs Button at Tab Bar */
-.button-popup {
-    background: var(--bgDisabledDark);
-    backdrop-filter: blur(12px);
-    border: none;
+/* Tabs Button & Recently Closed Tabs Popup */
+.button-popup,
+.tab-button-popup {
+    background-color: var(--bgDisabledDark) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Ensure inner scroll areas and headers maintain blur transparency */
+.button-popup .undo-wrapper,
+.button-popup .popup-scrollarea,
+.button-popup-header-toolbar,
+.button-popup.ToolbarButtonPopup-DefaultStyles footer {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.button-popup .undo-wrapper .undo-item .undo-text .subject {
+    background-color: transparent !important;
+    color: var(--colorFg, #ffffff) !important;
+}
+
+.button-popup .undo-wrapper .undo-item:hover .undo-text .subject {
+    background-color: transparent !important;
 }
 
 .mainbar,
@@ -90,6 +113,7 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
+/* Performance fix: Avoid toggling dynamic backdrop-filter blur on hover */
 .UrlBar-AddressField:hover {
     background-color: var(--bg);
     backdrop-filter: blur(8px);
@@ -145,26 +169,31 @@ footer .toolbar-statusbar {
     background-color: var(--bgDisabledDark) !important;
     backdrop-filter: blur(12px) !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
-}
-.quick-command-container .quick-commands * {
     color: #ffffff !important;
 }
 
 /* Privacy Statistics Modal */
-#modal-bg .modal-wrapper,
-#modal-bg.Privacy-Stats-Modal .TabbedView-List,
-.dialog-preview,
-.dialog-footer {
+#modal-bg .modal-wrapper {
     background-color: var(--bgDisabledDark) !important;
     backdrop-filter: blur(12px) !important;
     border: none !important;
-}
-#modal-bg .modal-wrapper * {
     color: #ffffff !important;
+}
+#modal-bg.Privacy-Stats-Modal .TabbedView-List,
+.dialog-preview,
+.dialog-footer {
+    background-color: transparent !important;
+    border: none !important;
 }
 
 /* Privacy Dashboard Overview */
-#modal-bg.PrivacyDash .modal-wrapper,
+/* Performance fix: Blur parent modal container once instead of stacking 12 individual blurred layers */
+#modal-bg.PrivacyDash .modal-wrapper {
+    background-color: var(--bgDark) !important;
+    backdrop-filter: blur(12px) !important;
+    border: none !important;
+    color: #ffffff !important;
+}
 .PrivacyDash-Title,
 .PrivacyDash .dialog-content,
 .PrivacyDash-SectionContent,
@@ -176,12 +205,8 @@ footer .toolbar-statusbar {
 .sortselector:not(.sortselector-compact),
 .PrivacyDash-User-Top,
 .PrivacyDash-StatusBlock--Fact {
-    background-color: var(--bgDark) !important;
-    backdrop-filter: blur(12px) !important;
+    background-color: transparent !important;
     border: none !important;
-}
-#modal-bg.PrivacyDash .modal-wrapper * {
-    color: #ffffff !important;
 }
 
 /* ==========================================================================
@@ -195,8 +220,5 @@ footer .toolbar-statusbar {
     background-color: var(--bgDisabledDark) !important;
     backdrop-filter: blur(12px) !important;
     border: none !important;
-}
-.header-section *, 
-.system-build-card * {
     color: #ffffff !important;
 }
