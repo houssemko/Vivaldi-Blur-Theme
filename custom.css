@@ -4,11 +4,9 @@
     --bgLight: rgba(255, 255, 255, 0.7);
     --bgDisabledDark: rgba(10, 10, 10, 0.4);
     --bgDisabledLight: rgba(255, 255, 255, 0.4);
-    --blurLow: blur(5px);
     --blur: blur(10px);
     --blurMed: blur(7px);
     --radius: 6px;
-    --customRadius: var(--radius);
     --btnBgDark: rgba(30, 30, 30, 0.55);
     --btnBgDarkHover: rgba(45, 45, 45, 0.68);
     --btnBgDarkActive: rgba(55, 55, 55, 0.78);
@@ -198,20 +196,6 @@
     border: 1px solid var(--glassBorder) !important;
     box-shadow: var(--glassShadowLg) !important;
     overflow: visible !important;
-}
-
-.button-popup:has(.TabButtonPopup) .TabButtonPopup,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup > header,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .vivaldi-tree,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .VivaldiList,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .VivaldiList-Offset,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .vivaldi-tree .VivaldiList .tree-item .tree-row,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .quick-commands,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .dialog-content,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .no-results,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .undo-wrapper {
-    background: transparent !important;
-    border: none !important;
 }
 
 .button-popup .undo-wrapper,
@@ -428,7 +412,7 @@ footer .toolbar-statusbar {
     min-height: unset;
     display: flex;
     justify-content: center;
-    border-radius: var(--customRadius);
+    border-radius: var(--radius);
 }
 
 .startpage .startpage-folder-navigation button {
@@ -509,7 +493,7 @@ button.button-startpage:after { content: unset; }
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 !important;
+    padding: 0 1px !important;
     min-width: 27px;
     height: var(--startpageNavBtnHeight);
     border-radius: var(--startpageNavBtnRounding) !important;
@@ -540,11 +524,6 @@ button.button-startpage:after { content: unset; }
     fill: var(--startpageNavBtnSecondary);
 }
 
-.startpage .startpage-navigation .button-startpage.add-set {
-    padding-left: 1px;
-    padding-right: 1px;
-}
-
 /* Speed dial spacing */
 .speeddial { margin-top: 0; padding-top: 2px; }
 .sdwrapper .iconmenu-container.searchfield { margin: 0px auto 25px; }
@@ -568,20 +547,14 @@ button.button-startpage:after { content: unset; }
 
 #browser:not(.inner, .narrow-tiling) #webpage-stack > .tiled.visible {
     box-shadow: inset 0 0 0 var(--n6) transparent;
+    padding: 0;
 }
 
 .tiled.webpageview:not(.active) {
     box-shadow: none;
 }
 
-#browser:not(.inner, .narrow-tiling) #webpage-stack > .tiled.visible {
-    padding: 0;
-}
-
-.hasfocus .webpageview.tiled.active {
-    box-shadow: 0 0 0 2px var(--colorHighlightBg);
-}
-
+.hasfocus .webpageview.tiled.active,
 .isblurred .webpageview.tiled.active {
     box-shadow: 0 0 0 2px var(--colorHighlightBg);
 }
