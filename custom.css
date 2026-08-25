@@ -1,0 +1,654 @@
+/* === Variables & Theme === */
+:root {
+    --bgDark: rgba(10, 10, 10, 0.8);
+    --bgLight: rgba(255, 255, 255, 0.7);
+    --bgDisabledDark: rgba(10, 10, 10, 0.4);
+    --bgDisabledLight: rgba(255, 255, 255, 0.4);
+    --blurLow: blur(5px);
+    --blur: blur(10px);
+    --blurMed: blur(7px);
+    --radius: 6px;
+    --customRadius: var(--radius);
+    --btnBgDark: rgba(30, 30, 30, 0.55);
+    --btnBgDarkHover: rgba(45, 45, 45, 0.68);
+    --btnBgDarkActive: rgba(55, 55, 55, 0.78);
+    --btnBgLight: rgba(0, 0, 0, 0.10);
+    --btnBgLightHover: rgba(0, 0, 0, 0.20);
+    --btnBgLightActive: rgba(0, 0, 0, 0.30);
+    --btnRadius: 6px;
+    --glassBorderDark: rgba(255, 255, 255, 0.15);
+    --glassBorderLight: rgba(0, 0, 0, 0.18);
+    --glassShadowDark: 0 4px 15px rgba(0, 0, 0, 0.4);
+    --glassShadowLight: 0 4px 15px rgba(0, 0, 0, 0.12);
+    --glassShadowLgDark: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --glassShadowLgLight: 0 8px 32px rgba(0, 0, 0, 0.15);
+
+    --startpageNavBtnPrimary: var(--colorFg);
+    --startpageNavBtnSecondary: var(--colorFg);
+    --startpageNavBtnInactive: transparent;
+    --startpageNavBtnRounding: 14px;
+    --startpageNavBtnHeight: 23px;
+    --startpageNavBtnMargin: 10px;
+    --startpageNavPaddingOnTop: 10px;
+    --startpageNavPaddingOnBottom: 10px;
+    --startpageNavBlur: 6px;
+    --startpageNavBlurStrong: 12px;
+}
+
+.theme-dark {
+    --bg: var(--bgDark);
+    --bgDisabled: var(--bgDisabledDark);
+    --btnBg: var(--btnBgDark);
+    --btnBgHover: var(--btnBgDarkHover);
+    --btnBgActive: var(--btnBgDarkActive);
+    --glassBorder: var(--glassBorderDark);
+    --glassShadow: var(--glassShadowDark);
+    --glassShadowLg: var(--glassShadowLgDark);
+}
+
+.theme-light {
+    --bg: var(--bgLight);
+    --bgDisabled: var(--bgDisabledLight);
+    --btnBg: var(--btnBgLight);
+    --btnBgHover: var(--btnBgLightHover);
+    --btnBgActive: var(--btnBgLightActive);
+    --glassBorder: var(--glassBorderLight);
+    --glassShadow: var(--glassShadowLight);
+    --glassShadowLg: var(--glassShadowLgLight);
+}
+
+/* === Window & Header === */
+.auto-hide #header { display: none !important; }
+
+.auto-hide-wrapper.top,
+.auto-hide-wrapper.bottom,
+.auto-hide-wrapper.left,
+.auto-hide-wrapper.right {
+    background-color: var(--bg) !important;
+    backdrop-filter: var(--blur) !important;
+}
+
+.auto-hide-wrapper #tabs-tabbar-container {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    transform: none !important;
+}
+
+.auto-hide-wrapper .mainbar .toolbar button,
+.auto-hide-wrapper .window-buttongroup button {
+    backdrop-filter: none !important;
+    transform: none !important;
+}
+
+.auto-hide .window-buttongroup { height: 34px !important; }
+.auto-hide .window-buttongroup button {
+    height: 34px !important;
+    min-width: 34px !important;
+    width: auto !important;
+    padding: 0 !important;
+}
+
+#browser .tabbar-wrapper, #browser.tabs-top #header {
+    background-color: transparent;
+}
+
+#browser.win .window-buttongroup {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    overflow: hidden;
+    line-height: initial;
+}
+
+#browser.win.tabs-left .window-buttongroup,
+#browser.win.tabs-right .window-buttongroup,
+#browser.win.tabs-off .window-buttongroup {
+    right: 0px !important;
+    margin-right: 0px !important;
+}
+
+/* === Tabs === */
+#browser:not(.transparent-tabbar) #tabs-tabbar-container {
+    background-color: var(--bg);
+    backdrop-filter: var(--blur);
+    transform: translateZ(0);
+    margin: 5px 5px 0px 5px;
+    border-radius: var(--radius);
+    height: 30px;
+}
+
+.auto-hide #browser:not(.transparent-tabbar) #tabs-tabbar-container {
+    margin: 0px 0px 0 0px;
+}
+
+#tabs-tabbar-container {
+    z-index: 1 !important;
+    position: relative !important;
+}
+
+/* Colored / active tab blur */
+#browser.color-behind-tabs-on .tab.active.active,
+#browser .tab-position.colored .tab.active,
+#browser .tab-position.colored .tab:not(.active),
+#browser .tab-position.colored.accordion-toggle-arrow {
+    background-color: var(--bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Tab hover */
+#tabs-container .tab:not(.tab-group,.tab.active):hover,
+#browser .tab-position.colored.accordion-toggle-arrow:hover,
+#browser .tab-position.colored .tab:not(.active):hover {
+    background-color: var(--bg);
+    backdrop-filter: var(--blurMed);
+}
+
+.tab.active .favicon { filter: none !important; }
+
+/* === Colored Tab Groups === */
+#browser .tab-position.colored .tab-group-indicator,
+#browser .tab-position.colored .tabbar-group-title {
+    color: var(--colorFg) !important;
+}
+
+#browser .tab-position.colored .stack-counter {
+    background-color: var(--colorHighlightBg) !important;
+    color: var(--colorHighlightFg) !important;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 0 6px;
+    min-width: 16px;
+    text-align: center;
+}
+
+#browser .tab-position.colored .tab:not(.active) .tab-header {
+    color: var(--colorFg) !important;
+}
+
+/* === Fullscreen Gap Killer === */
+#browser.fullscreen,
+#browser.fullscreen body,
+#browser.fullscreen #header,
+#browser.fullscreen #titlebar,
+#browser.fullscreen #tabs-container,
+#browser.fullscreen #tabs-tabbar-container,
+#browser.fullscreen .mainbar,
+#browser.fullscreen .bookmark-bar,
+#browser.fullscreen #webpage-stack {
+    margin: 0 !important;
+    padding: 0 !important;
+    top: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    border: none !important;
+}
+
+/* === Popups === */
+.button-popup:not(.extension-popup):not(.ToolbarButtonPopup-DefaultStyles) {
+    background: var(--bgDisabled) !important;
+    backdrop-filter: var(--blur) !important;
+    border: 1px solid var(--glassBorder) !important;
+    box-shadow: var(--glassShadowLg) !important;
+}
+
+.button-popup:has(.TabButtonPopup):not(.extension-popup):not(.ToolbarButtonPopup-DefaultStyles) {
+    background: var(--bgDisabled) !important;
+    backdrop-filter: var(--blur) !important;
+    border: 1px solid var(--glassBorder) !important;
+    box-shadow: var(--glassShadowLg) !important;
+    overflow: visible !important;
+}
+
+.button-popup:has(.TabButtonPopup) .TabButtonPopup,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup > header,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .vivaldi-tree,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .VivaldiList,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .VivaldiList-Offset,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .vivaldi-tree .VivaldiList .tree-item .tree-row,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .quick-commands,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .dialog-content,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .no-results,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .undo-wrapper {
+    background: transparent !important;
+    border: none !important;
+}
+
+.button-popup .undo-wrapper,
+.TabButtonPopup .undo-wrapper,
+.button-popup-header-toolbar,
+.TabButtonPopup > header,
+.TabButtonPopup .quick-commands,
+.TabButtonPopup .dialog-content,
+.TabButtonPopup .no-results,
+.TabButtonPopup .vivaldi-tree,
+.TabButtonPopup .VivaldiList,
+.TabButtonPopup .VivaldiList-Offset,
+.TabButtonPopup .vivaldi-tree .VivaldiList .tree-item .tree-row {
+    background: transparent !important;
+    border: none !important;
+}
+
+.TabButtonPopup .vivaldi-tree .tree-row[data-selected] {
+    background-color: var(--colorFgAlpha) !important;
+}
+
+/* === Toolbar Z-Index === */
+.mainbar { z-index: 10; }
+.bookmark-bar { z-index: 5 !important; }
+
+.window-buttongroup { z-index: 1000 !important; }
+.vivaldi, .sidebar .button-toolbar.settings, .button-settings { z-index: 1001 !important; }
+
+/* === Address Bar === */
+.UrlBar-AddressField {
+    background-color: transparent;
+    border: 1px solid var(--glassBorder) !important;
+    box-shadow: var(--glassShadow);
+}
+
+/* Address Bar inside Tab Bar (idle blur) */
+#tabs-tabbar-container .UrlBar .UrlBar-AddressField:not(:hover):not(:focus-within),
+#tabs-tabbar-container .UrlBar .SearchField:not(:hover):not(:focus-within),
+#tabs-tabbar-container .toolbar-mainbar .UrlBar-AddressField:not(:hover):not(:focus-within),
+#tabs-tabbar-container .toolbar-mainbar .SearchField:not(:hover):not(:focus-within),
+.tabbar-wrapper .UrlBar-AddressField:not(:hover):not(:focus-within),
+.tabbar-wrapper .SearchField:not(:hover):not(:focus-within) {
+    background-color: var(--bg) !important;
+    backdrop-filter: var(--blurMed) !important;
+    -webkit-backdrop-filter: var(--blurMed) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: none !important;
+    transition: background-color 0.18s ease, backdrop-filter 0.18s ease;
+    border: none !important;
+}
+
+/* Address Bar inside Tab Bar (stronger blur on hover/focus) */
+#tabs-tabbar-container .UrlBar .UrlBar-AddressField:hover,
+#tabs-tabbar-container .UrlBar .UrlBar-AddressField:focus-within,
+#tabs-tabbar-container .UrlBar .SearchField:hover,
+#tabs-tabbar-container .UrlBar .SearchField:focus-within,
+#tabs-tabbar-container .toolbar-mainbar .UrlBar-AddressField:hover,
+#tabs-tabbar-container .toolbar-mainbar .UrlBar-AddressField:focus-within,
+#tabs-tabbar-container .toolbar-mainbar .SearchField:hover,
+#tabs-tabbar-container .toolbar-mainbar .SearchField:focus-within,
+.tabbar-wrapper .UrlBar-AddressField:hover,
+.tabbar-wrapper .UrlBar-AddressField:focus-within,
+.tabbar-wrapper .SearchField:hover,
+.tabbar-wrapper .SearchField:focus-within {
+    background-color: var(--bg) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border-radius: var(--radius) !important;
+}
+
+/* === Panels & Status Bar === */
+#panels-container.right { display: none !important; }
+footer#footer { background: none !important; border-top: none !important; }
+
+footer .toolbar-statusbar {
+    background-color: var(--bg);
+    backdrop-filter: var(--blur);
+    border-radius: var(--radius);
+    margin: 0 5px 5px 5px;
+}
+
+.inner > .StatusInfo > .StatusInfo-Content {
+    background-color: var(--bg) !important;
+    border-radius: var(--radius) !important;
+    padding-bottom: 5px !important;
+    margin: 0 5px 4px 5px !important;
+    border: none !important;
+}
+
+/* === Overlays & Modals === */
+.OmniDropdown,
+.addressfield-popup {
+    background-color: var(--bg) !important;
+    backdrop-filter: var(--blur) !important;
+    border: 1px solid var(--glassBorder) !important;
+    box-shadow: var(--glassShadow);
+}
+
+.quick-command-container .quick-commands {
+    background-color: var(--bgDisabled) !important;
+    backdrop-filter: var(--blur) !important;
+    border: 1px solid var(--glassBorder) !important;
+    color: var(--colorFg) !important;
+}
+
+#modal-bg .modal-wrapper {
+    background-color: var(--bgDisabled) !important;
+    backdrop-filter: var(--blur) !important;
+    border: none !important;
+    color: var(--colorFg) !important;
+}
+
+#modal-bg.Privacy-Stats-Modal .TabbedView-List,
+.dialog-preview,
+.dialog-footer {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+#modal-bg.PrivacyDash .modal-wrapper {
+    background-color: var(--bg) !important;
+    backdrop-filter: var(--blur) !important;
+    border: none !important;
+    color: var(--colorFg) !important;
+}
+
+.PrivacyDash-Title,
+.PrivacyDash .dialog-content,
+.PrivacyDash-SectionContent,
+.PrivacyDash-Section--Commitment,
+.PrivacyDash-Section--Commitment .PrivacyDash-SectionTitle,
+.PrivacyDash .dialog-header,
+.PrivacyDash-Stats-Board .TabbedView-List,
+.PrivacyDash-Stats-Board .TabbedView-Content,
+.sortselector:not(.sortselector-compact),
+.PrivacyDash-User-Top,
+.PrivacyDash-StatusBlock--Fact {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+/* === Internal Pages === */
+.header-section,
+.card.system-build-card,
+.card.update-info-card,
+.card.helpful-links-card,
+.footer-credits {
+    background-color: var(--bgDisabled) !important;
+    backdrop-filter: var(--blur) !important;
+    border: none !important;
+    color: var(--colorFg) !important;
+}
+
+/* === Ctrl+F === */
+.find-in-page-wrapper {
+    background-color: var(--bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* === Speed Dial === */
+.SpeedDial--Thumbnail {
+    background-color: var(--bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: none;
+}
+
+/* === Speed Dial Search Bar (idle blurred) === */
+.startpage .SearchField:not(:hover):not(:focus-within),
+.StartPage .SearchField:not(:hover):not(:focus-within),
+.SpeedDial .SearchField:not(:hover):not(:focus-within),
+.SpeedDialView .SearchField:not(:hover):not(:focus-within) {
+    background-color: var(--bg) !important;
+    backdrop-filter: var(--blurMed) !important;
+    -webkit-backdrop-filter: var(--blurMed) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: none !important;
+    transition: background-color 0.18s ease, backdrop-filter 0.18s ease;
+}
+
+/* Speed Dial Search Bar (stronger blur on hover/focus) */
+.startpage .SearchField:hover,
+.startpage .SearchField:focus-within,
+.StartPage .SearchField:hover,
+.StartPage .SearchField:focus-within,
+.SpeedDial .SearchField:hover,
+.SpeedDial .SearchField:focus-within,
+.SpeedDialView .SearchField:hover,
+.SpeedDialView .SearchField:focus-within {
+    background-color: var(--bg) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-radius: var(--radius) !important;
+}
+
+.startpage .SearchField input,
+.StartPage .SearchField input,
+.SpeedDial .SearchField input,
+.SpeedDialView .SearchField input {
+    background: transparent !important;
+    color: inherit !important;
+    border-radius: var(--radius) !important;
+}
+
+/* === Startpage Navigation === */
+.startpage .startpage-navigation {
+    background-color: var(--bg);
+    backdrop-filter: blur(var(--startpageNavBlur));
+    -webkit-backdrop-filter: blur(var(--startpageNavBlur));
+    box-shadow: unset;
+    padding-top: var(--startpageNavPaddingOnTop);
+    padding-bottom: calc(var(--startpageNavPaddingOnBottom) - 2px);
+    min-height: unset;
+    display: flex;
+    justify-content: center;
+    border-radius: var(--customRadius);
+}
+
+.startpage .startpage-folder-navigation button {
+    background-color: unset;
+}
+
+.startpage .startpage-navigation .button-startpage,
+.startpage .startpage-folder-navigation .button-startpage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--startpageNavBtnHeight);
+    border-radius: var(--startpageNavBtnRounding) !important;
+    border: 1.2px solid var(--startpageNavBtnPrimary);
+    background-color: var(--startpageNavBtnInactive);
+    color: var(--startpageNavBtnPrimary);
+    margin: 0 var(--startpageNavBtnMargin) !important;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+    transition: 0.2s ease;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.startpage .startpage-navigation .button-startpage.active,
+.startpage .startpage-navigation .button-startpage:hover,
+.startpage .startpage-folder-navigation .button-startpage:hover {
+    color: var(--startpageNavBtnSecondary);
+    background-color: var(--startpageNavBtnPrimary);
+    text-shadow: 0 0 0.5px var(--startpageNavBtnSecondary);
+    backdrop-filter: blur(var(--startpageNavBlurStrong));
+    -webkit-backdrop-filter: blur(var(--startpageNavBlurStrong));
+}
+
+.startpage .startpage-navigation .button-startpage svg,
+.startpage .startpage-folder-navigation .button-startpage svg {
+    color: var(--startpageNavBtnPrimary);
+    width: auto;
+    height: 2.1em;
+}
+
+.startpage .startpage-navigation .button-startpage.active svg,
+.startpage .startpage-navigation .button-startpage:hover svg,
+.startpage .startpage-folder-navigation .button-startpage:hover svg {
+    color: var(--startpageNavBtnSecondary);
+    filter: unset;
+}
+
+/* Folder back button */
+button.button-startpage.up-level svg {
+    position: unset;
+    margin: 0 4px;
+}
+button.button-startpage.up-level span { display: flex; }
+.button-startpage.up-level { padding: 0 14px 0 6px; }
+
+/* Center folder navigation */
+.startpage .startpage-folder-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Startpage widgets */
+.Dashboard-Widgets .dashboard-widget {
+    background-color: var(--bg);
+    backdrop-filter: blur(12px) !important;
+}
+
+/* Remove borders & extra styling */
+.startpage .startpage-navigation .startpage-navigation-group:last-of-type { border: unset; }
+button.button-startpage:after { content: unset; }
+
+/* Notes icon scale */
+.startpage .startpage-navigation .button-startpage[data-id="notes"] svg { transform: scale(1.45); }
+
+/* === Startpage Add/Plus Button === */
+.startpage .startpage-navigation .button-startpage.add-set {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+    min-width: 27px;
+    height: var(--startpageNavBtnHeight);
+    border-radius: var(--startpageNavBtnRounding) !important;
+    background-color: var(--startpageNavBtnInactive);
+    border: 1.2px solid var(--startpageNavBtnPrimary);
+    margin: 0 var(--startpageNavBtnMargin) !important;
+    box-shadow: 0 0 2px 1px rgba(0,0,0,0.2);
+    transition: 0.2s ease;
+}
+
+.startpage .startpage-navigation .button-startpage.add-set svg {
+    height: 16px;
+    width: 16px;
+    margin: 0;
+    display: block;
+}
+
+.startpage .startpage-navigation .button-startpage.add-set:hover,
+.startpage .startpage-navigation .button-startpage.add-set.active {
+    background-color: var(--startpageNavBtnPrimary);
+    color: var(--startpageNavBtnSecondary);
+    backdrop-filter: blur(var(--startpageNavBlurStrong));
+    -webkit-backdrop-filter: blur(var(--startpageNavBlurStrong));
+}
+
+.startpage .startpage-navigation .button-startpage.add-set:hover svg path,
+.startpage .startpage-navigation .button-startpage.add-set.active svg path {
+    fill: var(--startpageNavBtnSecondary);
+}
+
+.startpage .startpage-navigation .button-startpage.add-set {
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+/* Speed dial spacing */
+.speeddial { margin-top: 0; padding-top: 2px; }
+.sdwrapper .iconmenu-container.searchfield { margin: 0px auto 25px; }
+
+/* === History Panel === */
+#history-panel .vivaldi-tree .tree-row {
+    background-color: transparent !important;
+    transition: background-color var(--anim-duration) ease;
+}
+
+/* === Auto-hide Webpage Margin Fix === */
+.auto-hide #browser:not(.fullscreen) #webpage-stack {
+    margin: 0 0px 0px 0px;
+    border-radius: 0px;
+}
+
+/* === Tab Tiles === */
+#browser .tile:has(> .tiled.webpageview) {
+    border: var(--mosaicPadding) solid transparent;
+}
+
+#browser:not(.inner, .narrow-tiling) #webpage-stack > .tiled.visible {
+    box-shadow: inset 0 0 0 var(--n6) transparent;
+}
+
+.tiled.webpageview:not(.active) {
+    box-shadow: none;
+}
+
+#browser:not(.inner, .narrow-tiling) #webpage-stack > .tiled.visible {
+    padding: 0;
+}
+
+.hasfocus .webpageview.tiled.active {
+    box-shadow: 0 0 0 2px var(--colorHighlightBg);
+}
+
+.isblurred .webpageview.tiled.active {
+    box-shadow: 0 0 0 2px var(--colorHighlightBg);
+}
+
+/* === Buttons === */
+.mainbar .toolbar button,
+.window-buttongroup button {
+    background-color: var(--btnBg, var(--btnBgDark)) !important;
+    border: none !important;
+    border-radius: var(--btnRadius) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.bookmark-bar button {
+    background-color: var(--btnBg, var(--btnBgDark)) !important;
+    border: none !important;
+    border-radius: var(--btnRadius) !important;
+}
+
+.mainbar,
+.mainbar .toolbar-mainbar,
+.bookmark-bar {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+}
+
+.mainbar .toolbar button:hover,
+.window-buttongroup button:hover,
+.bookmark-bar button:hover {
+    background-color: var(--btnBgHover, var(--btnBgDarkHover)) !important;
+}
+
+.mainbar .toolbar button:active,
+.mainbar .toolbar button.toggled,
+.window-buttongroup button:active,
+.window-buttongroup button.toggled,
+.bookmark-bar button:active,
+.bookmark-bar button.toggled {
+    background-color: var(--btnBgActive, var(--btnBgDarkActive)) !important;
+}
+
+.mainbar .toolbar button:focus-visible,
+.window-buttongroup button:focus-visible,
+.bookmark-bar button:focus-visible {
+    outline: 2px solid var(--colorAccentBg, #3b82f6) !important;
+    outline-offset: 2px;
+}
+
+.mainbar .toolbar .toolbar-spacer > button,
+.mainbar .toolbar .toolbar-spacer-flexible > button,
+.mainbar .toolbar .toolbar-spacer-panel > button,
+.mainbar .toolbar .button-toolbar.toolbar-divider > button,
+.bookmark-bar button:has(.separator),
+.bookmark-bar button.chevron {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+.mainbar .toolbar .toolbar-spacer > button:hover,
+.mainbar .toolbar .toolbar-spacer-flexible > button:hover,
+.mainbar .toolbar .toolbar-spacer-panel > button:hover,
+.mainbar .toolbar .button-toolbar.toolbar-divider > button:hover,
+.bookmark-bar button:has(.separator):hover,
+.bookmark-bar button.chevron:hover {
+    background-color: transparent !important;
+}
