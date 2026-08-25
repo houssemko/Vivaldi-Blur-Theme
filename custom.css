@@ -198,6 +198,20 @@
     overflow: visible !important;
 }
 
+.button-popup:has(.TabButtonPopup) .TabButtonPopup,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup > header,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .vivaldi-tree,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .VivaldiList,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .VivaldiList-Offset,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .vivaldi-tree .VivaldiList .tree-item .tree-row,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .quick-commands,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .dialog-content,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .no-results,
+.button-popup:has(.TabButtonPopup) .TabButtonPopup .undo-wrapper {
+    background: transparent !important;
+    border: none !important;
+}
+
 .button-popup .undo-wrapper,
 .TabButtonPopup .undo-wrapper,
 .button-popup-header-toolbar,
