@@ -23,7 +23,6 @@
 
     --startpageNavBtnPrimary: var(--colorFg);
     --startpageNavBtnSecondary: var(--colorFg);
-    --startpageNavBtnInactive: transparent;
     --startpageNavBtnRounding: 14px;
     --startpageNavBtnHeight: 23px;
     --startpageNavBtnMargin: 10px;
@@ -198,23 +197,8 @@
     overflow: visible !important;
 }
 
-.button-popup:has(.TabButtonPopup) .TabButtonPopup,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup > header,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .vivaldi-tree,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .VivaldiList,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .VivaldiList-Offset,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .vivaldi-tree .VivaldiList .tree-item .tree-row,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .quick-commands,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .dialog-content,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .no-results,
-.button-popup:has(.TabButtonPopup) .TabButtonPopup .undo-wrapper {
-    background: transparent !important;
-    border: none !important;
-}
-
 .button-popup .undo-wrapper,
-.TabButtonPopup .undo-wrapper,
-.button-popup-header-toolbar,
+.TabButtonPopup,
 .TabButtonPopup > header,
 .TabButtonPopup .quick-commands,
 .TabButtonPopup .dialog-content,
@@ -441,7 +425,7 @@ footer .toolbar-statusbar {
     height: var(--startpageNavBtnHeight);
     border-radius: var(--startpageNavBtnRounding) !important;
     border: 1.2px solid var(--startpageNavBtnPrimary);
-    background-color: var(--startpageNavBtnInactive);
+    background-color: transparent;
     color: var(--startpageNavBtnPrimary);
     margin: 0 var(--startpageNavBtnMargin) !important;
     box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
@@ -511,7 +495,7 @@ button.button-startpage:after { content: unset; }
     min-width: 27px;
     height: var(--startpageNavBtnHeight);
     border-radius: var(--startpageNavBtnRounding) !important;
-    background-color: var(--startpageNavBtnInactive);
+    background-color: transparent;
     border: 1.2px solid var(--startpageNavBtnPrimary);
     margin: 0 var(--startpageNavBtnMargin) !important;
     box-shadow: 0 0 2px 1px rgba(0,0,0,0.2);
