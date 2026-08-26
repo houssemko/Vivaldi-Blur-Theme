@@ -1,6 +1,6 @@
 /* === Variables & Theme === */
 :root {
-    --bgDark: rgba(10, 10, 10, 0.8);
+    --bgDark: rgba(10, 10, 10, 0.7);
     --bgLight: rgba(255, 255, 255, 0.7);
     --bgDisabledDark: rgba(10, 10, 10, 0.4);
     --bgDisabledLight: rgba(255, 255, 255, 0.4);
@@ -123,63 +123,6 @@
     position: relative !important;
 }
 
-/* Colored / active tab blur */
-#browser.color-behind-tabs-on .tab.active.active,
-#browser .tab-position.colored .tab.active,
-#browser .tab-position.colored .tab:not(.active),
-#browser .tab-position.colored.accordion-toggle-arrow {
-    background-color: var(--bg);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-}
-
-/* Tab hover */
-#tabs-container .tab:not(.tab-group,.tab.active):hover,
-#browser .tab-position.colored.accordion-toggle-arrow:hover,
-#browser .tab-position.colored .tab:not(.active):hover {
-    background-color: var(--bg);
-    backdrop-filter: var(--blurMed);
-}
-
-.tab.active .favicon { filter: none !important; }
-
-/* === Colored Tab Groups === */
-#browser .tab-position.colored .tab-group-indicator,
-#browser .tab-position.colored .tabbar-group-title {
-    color: var(--colorFg) !important;
-}
-
-#browser .tab-position.colored .stack-counter {
-    background-color: var(--colorHighlightBg) !important;
-    color: var(--colorHighlightFg) !important;
-    font-weight: 600;
-    border-radius: 10px;
-    padding: 0 6px;
-    min-width: 16px;
-    text-align: center;
-}
-
-#browser .tab-position.colored .tab:not(.active) .tab-header {
-    color: var(--colorFg) !important;
-}
-
-/* === Fullscreen Gap Killer === */
-#browser.fullscreen,
-#browser.fullscreen body,
-#browser.fullscreen #header,
-#browser.fullscreen #titlebar,
-#browser.fullscreen #tabs-container,
-#browser.fullscreen #tabs-tabbar-container,
-#browser.fullscreen .mainbar,
-#browser.fullscreen .bookmark-bar,
-#browser.fullscreen #webpage-stack {
-    margin: 0 !important;
-    padding: 0 !important;
-    top: 0 !important;
-    min-height: 0 !important;
-    height: auto !important;
-    border: none !important;
-}
 
 /* === Popups === */
 .button-popup:not(.extension-popup):not(.ToolbarButtonPopup-DefaultStyles) {
@@ -211,6 +154,11 @@
     border: none !important;
 }
 
+.TabButtonPopup .vivaldi-tree {
+    max-height: 350px;
+    overflow: hidden;
+}
+
 .TabButtonPopup .vivaldi-tree .tree-row[data-selected] {
     background-color: var(--colorFgAlpha) !important;
 }
@@ -227,41 +175,6 @@
     background-color: transparent;
     border: 1px solid var(--glassBorder) !important;
     box-shadow: var(--glassShadow);
-}
-
-/* Address Bar inside Tab Bar (idle blur) */
-#tabs-tabbar-container .UrlBar .UrlBar-AddressField:not(:hover):not(:focus-within),
-#tabs-tabbar-container .UrlBar .SearchField:not(:hover):not(:focus-within),
-#tabs-tabbar-container .toolbar-mainbar .UrlBar-AddressField:not(:hover):not(:focus-within),
-#tabs-tabbar-container .toolbar-mainbar .SearchField:not(:hover):not(:focus-within),
-.tabbar-wrapper .UrlBar-AddressField:not(:hover):not(:focus-within),
-.tabbar-wrapper .SearchField:not(:hover):not(:focus-within) {
-    background-color: var(--bg) !important;
-    backdrop-filter: var(--blurMed) !important;
-    -webkit-backdrop-filter: var(--blurMed) !important;
-    border-radius: var(--radius) !important;
-    box-shadow: none !important;
-    transition: background-color 0.18s ease, backdrop-filter 0.18s ease;
-    border: none !important;
-}
-
-/* Address Bar inside Tab Bar (stronger blur on hover/focus) */
-#tabs-tabbar-container .UrlBar .UrlBar-AddressField:hover,
-#tabs-tabbar-container .UrlBar .UrlBar-AddressField:focus-within,
-#tabs-tabbar-container .UrlBar .SearchField:hover,
-#tabs-tabbar-container .UrlBar .SearchField:focus-within,
-#tabs-tabbar-container .toolbar-mainbar .UrlBar-AddressField:hover,
-#tabs-tabbar-container .toolbar-mainbar .UrlBar-AddressField:focus-within,
-#tabs-tabbar-container .toolbar-mainbar .SearchField:hover,
-#tabs-tabbar-container .toolbar-mainbar .SearchField:focus-within,
-.tabbar-wrapper .UrlBar-AddressField:hover,
-.tabbar-wrapper .UrlBar-AddressField:focus-within,
-.tabbar-wrapper .SearchField:hover,
-.tabbar-wrapper .SearchField:focus-within {
-    background-color: var(--bg) !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-    border-radius: var(--radius) !important;
 }
 
 /* === Panels & Status Bar === */
@@ -354,207 +267,10 @@ footer .toolbar-statusbar {
     -webkit-backdrop-filter: blur(8px);
 }
 
-/* === Speed Dial === */
-.SpeedDial--Thumbnail {
-    background-color: var(--bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: none;
-}
-
-/* === Speed Dial Search Bar (idle blurred) === */
-.startpage .SearchField:not(:hover):not(:focus-within),
-.StartPage .SearchField:not(:hover):not(:focus-within),
-.SpeedDial .SearchField:not(:hover):not(:focus-within),
-.SpeedDialView .SearchField:not(:hover):not(:focus-within) {
-    background-color: var(--bg) !important;
-    backdrop-filter: var(--blurMed) !important;
-    -webkit-backdrop-filter: var(--blurMed) !important;
-    border-radius: var(--radius) !important;
-    box-shadow: none !important;
-    transition: background-color 0.18s ease, backdrop-filter 0.18s ease;
-}
-
-/* Speed Dial Search Bar (stronger blur on hover/focus) */
-.startpage .SearchField:hover,
-.startpage .SearchField:focus-within,
-.StartPage .SearchField:hover,
-.StartPage .SearchField:focus-within,
-.SpeedDial .SearchField:hover,
-.SpeedDial .SearchField:focus-within,
-.SpeedDialView .SearchField:hover,
-.SpeedDialView .SearchField:focus-within {
-    background-color: var(--bg) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border-radius: var(--radius) !important;
-}
-
-.startpage .SearchField input,
-.StartPage .SearchField input,
-.SpeedDial .SearchField input,
-.SpeedDialView .SearchField input {
-    background: transparent !important;
-    color: inherit !important;
-    border-radius: var(--radius) !important;
-}
-
-/* === Startpage Navigation === */
-.startpage .startpage-navigation {
-    background-color: var(--bg);
-    backdrop-filter: blur(var(--startpageNavBlur));
-    -webkit-backdrop-filter: blur(var(--startpageNavBlur));
-    box-shadow: unset;
-    padding-top: var(--startpageNavPaddingOnTop);
-    padding-bottom: calc(var(--startpageNavPaddingOnBottom) - 2px);
-    min-height: unset;
-    display: flex;
-    justify-content: center;
-    border-radius: var(--radius);
-}
-
-.startpage .startpage-folder-navigation button {
-    background-color: unset;
-}
-
-.startpage .startpage-navigation .button-startpage,
-.startpage .startpage-folder-navigation .button-startpage {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: var(--startpageNavBtnHeight);
-    border-radius: var(--startpageNavBtnRounding) !important;
-    border: 1.2px solid var(--startpageNavBtnPrimary);
-    background-color: transparent;
-    color: var(--startpageNavBtnPrimary);
-    margin: 0 var(--startpageNavBtnMargin) !important;
-    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
-    transition: 0.2s ease;
-    font-size: 11px;
-    font-weight: 500;
-}
-
-.startpage .startpage-navigation .button-startpage.active,
-.startpage .startpage-navigation .button-startpage:hover,
-.startpage .startpage-folder-navigation .button-startpage:hover {
-    color: var(--startpageNavBtnSecondary);
-    background-color: var(--startpageNavBtnPrimary);
-    text-shadow: 0 0 0.5px var(--startpageNavBtnSecondary);
-    backdrop-filter: blur(var(--startpageNavBlurStrong));
-    -webkit-backdrop-filter: blur(var(--startpageNavBlurStrong));
-}
-
-.startpage .startpage-navigation .button-startpage svg,
-.startpage .startpage-folder-navigation .button-startpage svg {
-    color: var(--startpageNavBtnPrimary);
-    width: auto;
-    height: 2.1em;
-}
-
-.startpage .startpage-navigation .button-startpage.active svg,
-.startpage .startpage-navigation .button-startpage:hover svg,
-.startpage .startpage-folder-navigation .button-startpage:hover svg {
-    color: var(--startpageNavBtnSecondary);
-    filter: unset;
-}
-
-/* Folder back button */
-button.button-startpage.up-level svg {
-    position: unset;
-    margin: 0 4px;
-}
-button.button-startpage.up-level span { display: flex; }
-.button-startpage.up-level { padding: 0 14px 0 6px; }
-
-/* Center folder navigation */
-.startpage .startpage-folder-navigation {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 /* Startpage widgets */
 .Dashboard-Widgets .dashboard-widget {
-    background-color: var(--bg);
+    background-color: var(--bgDisabled);
     backdrop-filter: blur(12px) !important;
-}
-
-/* Remove borders & extra styling */
-.startpage .startpage-navigation .startpage-navigation-group:last-of-type { border: unset; }
-button.button-startpage:after { content: unset; }
-
-/* Notes icon scale */
-.startpage .startpage-navigation .button-startpage[data-id="notes"] svg { transform: scale(1.45); }
-
-/* === Startpage Add/Plus Button === */
-.startpage .startpage-navigation .button-startpage.add-set {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 1px !important;
-    min-width: 27px;
-    height: var(--startpageNavBtnHeight);
-    border-radius: var(--startpageNavBtnRounding) !important;
-    background-color: transparent;
-    border: 1.2px solid var(--startpageNavBtnPrimary);
-    margin: 0 var(--startpageNavBtnMargin) !important;
-    box-shadow: 0 0 2px 1px rgba(0,0,0,0.2);
-    transition: 0.2s ease;
-}
-
-.startpage .startpage-navigation .button-startpage.add-set svg {
-    height: 16px;
-    width: 16px;
-    margin: 0;
-    display: block;
-}
-
-.startpage .startpage-navigation .button-startpage.add-set:hover,
-.startpage .startpage-navigation .button-startpage.add-set.active {
-    background-color: var(--startpageNavBtnPrimary);
-    color: var(--startpageNavBtnSecondary);
-    backdrop-filter: blur(var(--startpageNavBlurStrong));
-    -webkit-backdrop-filter: blur(var(--startpageNavBlurStrong));
-}
-
-.startpage .startpage-navigation .button-startpage.add-set:hover svg path,
-.startpage .startpage-navigation .button-startpage.add-set.active svg path {
-    fill: var(--startpageNavBtnSecondary);
-}
-
-/* Speed dial spacing */
-.speeddial { margin-top: 0; padding-top: 2px; }
-.sdwrapper .iconmenu-container.searchfield { margin: 0px auto 25px; }
-
-/* === History Panel === */
-#history-panel .vivaldi-tree .tree-row {
-    background-color: transparent !important;
-    transition: background-color var(--anim-duration) ease;
-}
-
-/* === Auto-hide Webpage Margin Fix === */
-.auto-hide #browser:not(.fullscreen) #webpage-stack {
-    margin: 0 0px 0px 0px;
-    border-radius: 0px;
-}
-
-/* === Tab Tiles === */
-#browser .tile:has(> .tiled.webpageview) {
-    border: var(--mosaicPadding) solid transparent;
-}
-
-#browser:not(.inner, .narrow-tiling) #webpage-stack > .tiled.visible {
-    box-shadow: inset 0 0 0 var(--n6) transparent;
-    padding: 0;
-}
-
-.tiled.webpageview:not(.active) {
-    box-shadow: none;
-}
-
-.hasfocus .webpageview.tiled.active,
-.isblurred .webpageview.tiled.active {
-    box-shadow: 0 0 0 2px var(--colorHighlightBg);
 }
 
 /* === Buttons === */
