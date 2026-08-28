@@ -132,26 +132,9 @@
     box-shadow: var(--glassShadowLg) !important;
 }
 
-.button-popup:has(.TabButtonPopup):not(.extension-popup):not(.ToolbarButtonPopup-DefaultStyles) {
-    background: var(--bgDisabled) !important;
-    backdrop-filter: var(--blur) !important;
-    border: 1px solid var(--glassBorder) !important;
-    box-shadow: var(--glassShadowLg) !important;
-    overflow: visible !important;
-}
-
-.button-popup .undo-wrapper,
 .TabButtonPopup,
-.TabButtonPopup > header,
-.TabButtonPopup .quick-commands,
-.TabButtonPopup .dialog-content,
-.TabButtonPopup .no-results,
-.TabButtonPopup .vivaldi-tree,
-.TabButtonPopup .VivaldiList,
-.TabButtonPopup .VivaldiList-Offset,
-.TabButtonPopup .vivaldi-tree .VivaldiList .tree-item .tree-row {
+.TabButtonPopup .tree-row {
     background: transparent !important;
-    border: none !important;
 }
 
 .TabButtonPopup .vivaldi-tree {
@@ -159,8 +142,8 @@
     overflow: hidden;
 }
 
-.TabButtonPopup .vivaldi-tree .tree-row[data-selected] {
-    background-color: var(--colorFgAlpha) !important;
+.TabButtonPopup > header {
+    display: none !important;
 }
 
 /* === Toolbar Z-Index === */
