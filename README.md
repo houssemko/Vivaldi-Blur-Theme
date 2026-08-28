@@ -23,7 +23,6 @@ A custom CSS theme for Vivaldi browser with glassmorphism/blur effects.
 - Transparent tab bar with backdrop blur
 - Custom styled popups (tab button popup, address bar dropdown, etc.)
 - Dark/light theme support via CSS variables
-- Hidden search field in tab button popup
 
 ## Customization
 
@@ -39,10 +38,6 @@ Edit the CSS variables in `:root` section of `custom.css`:
     /* ... more variables */
 }
 ```
-
-## Auto-hide Header
-
-The theme includes `.auto-hide #header { display: none !important; }` for auto-hide header mode.
 
 ## License
 
