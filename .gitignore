@@ -1,4 +1,5 @@
 *
 !.gitignore
 !custom.css
-!css-mods/
+!README.md
+!LICENSE
