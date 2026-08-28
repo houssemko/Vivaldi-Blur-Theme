@@ -5,14 +5,11 @@
     --bgDisabledDark: rgba(10, 10, 10, 0.4);
     --bgDisabledLight: rgba(255, 255, 255, 0.4);
     --blur: blur(10px);
-    --blurMed: blur(7px);
     --radius: 6px;
-    --btnBgDark: rgba(30, 30, 30, 0.55);
-    --btnBgDarkHover: rgba(45, 45, 45, 0.68);
-    --btnBgDarkActive: rgba(55, 55, 55, 0.78);
-    --btnBgLight: rgba(0, 0, 0, 0.10);
-    --btnBgLightHover: rgba(0, 0, 0, 0.20);
-    --btnBgLightActive: rgba(0, 0, 0, 0.30);
+    --btnBgBaseDark: rgba(30, 30, 30, 0.55);
+    --btnBgBaseLight: rgba(0, 0, 0, 0.10);
+    --btnOverlayHover: rgba(255, 255, 255, 0.12);
+    --btnOverlayActive: rgba(255, 255, 255, 0.22);
     --btnRadius: 6px;
     --glassBorderDark: rgba(255, 255, 255, 0.15);
     --glassBorderLight: rgba(0, 0, 0, 0.18);
@@ -20,24 +17,12 @@
     --glassShadowLight: 0 4px 15px rgba(0, 0, 0, 0.12);
     --glassShadowLgDark: 0 8px 32px rgba(0, 0, 0, 0.5);
     --glassShadowLgLight: 0 8px 32px rgba(0, 0, 0, 0.15);
-
-    --startpageNavBtnPrimary: var(--colorFg);
-    --startpageNavBtnSecondary: var(--colorFg);
-    --startpageNavBtnRounding: 14px;
-    --startpageNavBtnHeight: 23px;
-    --startpageNavBtnMargin: 10px;
-    --startpageNavPaddingOnTop: 10px;
-    --startpageNavPaddingOnBottom: 10px;
-    --startpageNavBlur: 6px;
-    --startpageNavBlurStrong: 12px;
 }
 
 .theme-dark {
     --bg: var(--bgDark);
     --bgDisabled: var(--bgDisabledDark);
-    --btnBg: var(--btnBgDark);
-    --btnBgHover: var(--btnBgDarkHover);
-    --btnBgActive: var(--btnBgDarkActive);
+    --btnBgBase: var(--btnBgBaseDark);
     --glassBorder: var(--glassBorderDark);
     --glassShadow: var(--glassShadowDark);
     --glassShadowLg: var(--glassShadowLgDark);
@@ -46,9 +31,7 @@
 .theme-light {
     --bg: var(--bgLight);
     --bgDisabled: var(--bgDisabledLight);
-    --btnBg: var(--btnBgLight);
-    --btnBgHover: var(--btnBgLightHover);
-    --btnBgActive: var(--btnBgLightActive);
+    --btnBgBase: var(--btnBgBaseLight);
     --glassBorder: var(--glassBorderLight);
     --glassShadow: var(--glassShadowLight);
     --glassShadowLg: var(--glassShadowLgLight);
@@ -258,19 +241,44 @@ footer .toolbar-statusbar {
 
 /* === Buttons === */
 .mainbar .toolbar button,
-.window-buttongroup button {
-    background-color: var(--btnBg, var(--btnBgDark)) !important;
+.window-buttongroup button,
+.bookmark-bar button {
+    background-color: var(--btnBgBase, var(--btnBgBaseDark)) !important;
     border: none !important;
     border-radius: var(--btnRadius) !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
+    position: relative !important;
+    overflow: hidden !important;
 }
 
-.bookmark-bar button {
-    background-color: var(--btnBg, var(--btnBgDark)) !important;
-    border: none !important;
-    border-radius: var(--btnRadius) !important;
+.mainbar .toolbar button::before,
+.window-buttongroup button::before,
+.bookmark-bar button::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: var(--btnOverlayHover) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.15s ease !important;
+}
+
+.mainbar .toolbar button:hover::before,
+.window-buttongroup button:hover::before,
+.bookmark-bar button:hover::before {
+    opacity: 1 !important;
+}
+
+.mainbar .toolbar button:active::before,
+.mainbar .toolbar button.toggled::before,
+.window-buttongroup button:active::before,
+.window-buttongroup button.toggled::before,
+.bookmark-bar button:active::before,
+.bookmark-bar button.toggled::before {
+    background: var(--btnOverlayActive) !important;
+    opacity: 1 !important;
 }
 
 .mainbar,
@@ -278,21 +286,6 @@ footer .toolbar-statusbar {
 .bookmark-bar {
     background-color: transparent !important;
     backdrop-filter: none !important;
-}
-
-.mainbar .toolbar button:hover,
-.window-buttongroup button:hover,
-.bookmark-bar button:hover {
-    background-color: var(--btnBgHover, var(--btnBgDarkHover)) !important;
-}
-
-.mainbar .toolbar button:active,
-.mainbar .toolbar button.toggled,
-.window-buttongroup button:active,
-.window-buttongroup button.toggled,
-.bookmark-bar button:active,
-.bookmark-bar button.toggled {
-    background-color: var(--btnBgActive, var(--btnBgDarkActive)) !important;
 }
 
 .mainbar .toolbar button:focus-visible,
@@ -314,11 +307,11 @@ footer .toolbar-statusbar {
     border-radius: 0 !important;
 }
 
-.mainbar .toolbar .toolbar-spacer > button:hover,
-.mainbar .toolbar .toolbar-spacer-flexible > button:hover,
-.mainbar .toolbar .toolbar-spacer-panel > button:hover,
-.mainbar .toolbar .button-toolbar.toolbar-divider > button:hover,
-.bookmark-bar button:has(.separator):hover,
-.bookmark-bar button.chevron:hover {
-    background-color: transparent !important;
+.mainbar .toolbar .toolbar-spacer > button::before,
+.mainbar .toolbar .toolbar-spacer-flexible > button::before,
+.mainbar .toolbar .toolbar-spacer-panel > button::before,
+.mainbar .toolbar .button-toolbar.toolbar-divider > button::before,
+.bookmark-bar button:has(.separator)::before,
+.bookmark-bar button.chevron::before {
+    display: none !important;
 }
