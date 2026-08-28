@@ -8,7 +8,7 @@ A custom CSS theme for Vivaldi browser with glassmorphism/blur effects.
    - Go to `vivaldi://settings/appearance/`
    - Scroll to "Custom UI"
    - Check "Load custom CSS"
-   - Select this folder (`/home/houssem/.config/vivaldi/`)
+   - Select the `custom.css` file from this repository
 
 2. Restart Vivaldi completely (close all windows and reopen)
 
