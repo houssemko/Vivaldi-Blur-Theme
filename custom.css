@@ -83,8 +83,8 @@
 #browser.win.tabs-left .window-buttongroup,
 #browser.win.tabs-right .window-buttongroup,
 #browser.win.tabs-off .window-buttongroup {
-    right: 0px !important;
-    margin-right: 0px !important;
+    right: 0 !important;
+    margin-right: 0 !important;
 }
 
 /* === Tabs === */
@@ -92,13 +92,13 @@
     background-color: var(--bg);
     backdrop-filter: var(--blur);
     transform: translateZ(0);
-    margin: 5px 5px 0px 5px;
+    margin: 5px 5px 0 5px;
     border-radius: var(--radius);
     height: 30px;
 }
 
 .auto-hide #browser:not(.transparent-tabbar) #tabs-tabbar-container {
-    margin: 0px 0px 0 0px;
+    margin: 0;
 }
 
 #tabs-tabbar-container {
@@ -133,8 +133,8 @@
 .mainbar { z-index: 10; }
 .bookmark-bar { z-index: 5 !important; }
 
-.window-buttongroup { z-index: 1000 !important; }
-.vivaldi, .sidebar .button-toolbar.settings, .button-settings { z-index: 1001 !important; }
+.window-buttongroup { z-index: 100 !important; }
+.vivaldi, .sidebar .button-toolbar.settings, .button-settings { z-index: 101 !important; }
 
 /* === Address Bar === */
 .UrlBar-AddressField {
@@ -230,7 +230,6 @@ footer .toolbar-statusbar {
 .find-in-page-wrapper {
     background-color: var(--bg);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
 }
 
 /* Startpage widgets */
@@ -240,9 +239,7 @@ footer .toolbar-statusbar {
 }
 
 /* === Buttons === */
-.mainbar .toolbar button,
-.window-buttongroup button,
-.bookmark-bar button {
+:is(.mainbar .toolbar, .window-buttongroup, .bookmark-bar) button {
     background-color: var(--btnBgBase, var(--btnBgBaseDark)) !important;
     border: none !important;
     border-radius: var(--btnRadius) !important;
@@ -253,9 +250,7 @@ footer .toolbar-statusbar {
     overflow: hidden !important;
 }
 
-.mainbar .toolbar button::before,
-.window-buttongroup button::before,
-.bookmark-bar button::before {
+:is(.mainbar .toolbar, .window-buttongroup, .bookmark-bar) button::before {
     content: "" !important;
     position: absolute !important;
     inset: 0 !important;
@@ -265,20 +260,18 @@ footer .toolbar-statusbar {
     transition: opacity 0.15s ease !important;
 }
 
-.mainbar .toolbar button:hover::before,
-.window-buttongroup button:hover::before,
-.bookmark-bar button:hover::before {
+:is(.mainbar .toolbar, .window-buttongroup, .bookmark-bar) button:hover::before {
     opacity: 1 !important;
 }
 
-.mainbar .toolbar button:active::before,
-.mainbar .toolbar button.toggled::before,
-.window-buttongroup button:active::before,
-.window-buttongroup button.toggled::before,
-.bookmark-bar button:active::before,
-.bookmark-bar button.toggled::before {
+:is(.mainbar .toolbar, .window-buttongroup, .bookmark-bar) button:is(:active, .toggled)::before {
     background: var(--btnOverlayActive) !important;
     opacity: 1 !important;
+}
+
+:is(.mainbar .toolbar, .window-buttongroup, .bookmark-bar) button:focus-visible {
+    outline: 2px solid var(--colorAccentBg, #3b82f6) !important;
+    outline-offset: 2px;
 }
 
 .mainbar,
@@ -288,17 +281,8 @@ footer .toolbar-statusbar {
     backdrop-filter: none !important;
 }
 
-.mainbar .toolbar button:focus-visible,
-.window-buttongroup button:focus-visible,
-.bookmark-bar button:focus-visible {
-    outline: 2px solid var(--colorAccentBg, #3b82f6) !important;
-    outline-offset: 2px;
-}
-
-.mainbar .toolbar .toolbar-spacer > button,
-.mainbar .toolbar .toolbar-spacer-flexible > button,
-.mainbar .toolbar .toolbar-spacer-panel > button,
-.mainbar .toolbar .button-toolbar.toolbar-divider > button,
+/* Spacers, dividers, chevrons: no overlay, no glass */
+:is(.mainbar .toolbar .toolbar-spacer, .mainbar .toolbar .toolbar-spacer-flexible, .mainbar .toolbar .toolbar-spacer-panel, .mainbar .toolbar .button-toolbar.toolbar-divider) button,
 .bookmark-bar button:has(.separator),
 .bookmark-bar button.chevron {
     background-color: transparent !important;
@@ -307,10 +291,7 @@ footer .toolbar-statusbar {
     border-radius: 0 !important;
 }
 
-.mainbar .toolbar .toolbar-spacer > button::before,
-.mainbar .toolbar .toolbar-spacer-flexible > button::before,
-.mainbar .toolbar .toolbar-spacer-panel > button::before,
-.mainbar .toolbar .button-toolbar.toolbar-divider > button::before,
+:is(.mainbar .toolbar .toolbar-spacer, .mainbar .toolbar .toolbar-spacer-flexible, .mainbar .toolbar .toolbar-spacer-panel, .mainbar .toolbar .button-toolbar.toolbar-divider) button::before,
 .bookmark-bar button:has(.separator)::before,
 .bookmark-bar button.chevron::before {
     display: none !important;
